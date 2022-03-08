@@ -200,7 +200,7 @@ class PicktechController extends Controller
 
 
         if (!$block) {
-            return response()->json(['success' => false, 'code' => '', 'alert' => '출금 신청할 블록개수를 입력해주세요.', 'data' => ''], 200);
+            return response()->json(['success' => false, 'code' => '', 'alert' => '출금 신청할 N+ point개수를 입력해주세요.', 'data' => ''], 200);
         }
 
         $npick_block = Npick_blocks::where([['user_id', $user->id]])
@@ -210,7 +210,7 @@ class PicktechController extends Controller
         $npick_block = empty($npick_block['total_block']) ? 0 : $npick_block['total_block'];
 
         if ($npick_block < $block) {
-            return response()->json(['success' => false, 'code' => '', 'alert' => '보유하고 있는 블록의 수량이 부족합니다.', 'data' => ''], 200);
+            return response()->json(['success' => false, 'code' => '', 'alert' => '보유하고 있는 N+ point의 수량이 부족합니다.', 'data' => ''], 200);
         }
 
         DB::beginTransaction();
